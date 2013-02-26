@@ -868,7 +868,12 @@
 	
 	pageDifference = 1;
 	
-	switch (recognizer.state) {
+	switch (recognizer.state)
+    {
+        case UIGestureRecognizerStatePossible:
+            break;
+        case UIGestureRecognizerStateCancelled:
+            break;
 		case UIGestureRecognizerStateBegan:
 			if (!animating) {
 				hasFailed = FALSE;
