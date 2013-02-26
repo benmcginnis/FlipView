@@ -256,14 +256,12 @@
 	
 	UIInterfaceOrientation orient = [UIApplication sharedApplication].statusBarOrientation;
 	
-	UIImage* flipImage;
+	UIImage* flipImage = flipIllusionPortrait; //default for UIInterfaceOrientationPortrait || orient == UIInterfaceOrientationPortraitUpsideDown
 	
-	if (orient == UIInterfaceOrientationPortrait || orient == UIInterfaceOrientationPortraitUpsideDown) {
-		flipImage = flipIllusionPortrait;
-	}else if (orient == UIInterfaceOrientationLandscapeLeft || orient == UIInterfaceOrientationLandscapeRight) {
+    if (orient == UIInterfaceOrientationLandscapeLeft || orient == UIInterfaceOrientationLandscapeRight)
+    {
 		flipImage = flipIllusionLandscape;
 	}
-	
 	
 	if (flipDirection == AFKPageFlipperDirectionRight) {
 		
