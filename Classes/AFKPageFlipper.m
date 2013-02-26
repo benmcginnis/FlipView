@@ -65,14 +65,14 @@
 	NSAutoreleasePool* newpool = [[NSAutoreleasePool alloc] init];
 	// Create screenshots of view
 	UIImage *currentImage = [self.currentView imageByRenderingView];
-	UIImage *newImage = [self.newView imageByRenderingView];
+	UIImage *newImage = [self.theNewView imageByRenderingView];
 	
 	
 	// Hide existing views
 	[self.currentView setHidden:TRUE];
-	[self.newView setHidden:TRUE];	
+	[self.theNewView setHidden:TRUE];	
 	self.currentView.alpha = 0;
-	self.newView.alpha = 0;
+	self.theNewView.alpha = 0;
 	
 	// Create representational layers
 	
@@ -541,11 +541,11 @@
 	
 	if (setNewViewOnCompletion) {
 		[self.currentView removeFromSuperview];
-		self.currentView = self.newView;
-		self.newView = Nil;
+		self.currentView = self.theNewView;
+		self.theNewView = Nil;
 	} else {
-		[self.newView removeFromSuperview];
-		self.newView = Nil;
+		[self.theNewView removeFromSuperview];
+		self.theNewView = Nil;
 	}
 	
 	setNewViewOnCompletion = NO;
@@ -720,15 +720,15 @@
 }
 
 
-@synthesize newView;
+@synthesize theNewView;
 
 
-- (void) setNewView:(UIView *) value {
-	if (newView) {
-		[newView release];
+- (void) setTheNewView:(UIView *) value {
+	if (theNewView) {
+		[theNewView release];
 	}
 	
-	newView = [value retain];
+	theNewView = [value retain];
 }
 
 
@@ -744,9 +744,9 @@
 	
 	currentPage = value;
 	
-	self.newView = [self.dataSource viewForPage:value inFlipper:self];
+	self.theNewView = [self.dataSource viewForPage:value inFlipper:self];
 	
-	[self addSubview:self.newView];
+	[self addSubview:self.theNewView];
 	
 	return TRUE;
 }	
@@ -759,8 +759,8 @@
 	setNewViewOnCompletion = YES;
 	animating = NO;
 	
-	[self.newView setHidden:TRUE];
-	self.newView.alpha = 0;
+	[self.theNewView setHidden:TRUE];
+	self.theNewView.alpha = 0;
 	
 	
 	[UIView beginAnimations:@"" context:Nil];
@@ -768,8 +768,8 @@
 	[UIView setAnimationDelegate:self];
 	[UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:context:)];
 	
-	[self.newView setHidden:FALSE];	
-	self.newView.alpha = 1;
+	[self.theNewView setHidden:FALSE];	
+	self.theNewView.alpha = 1;
 	
 	[UIView commitAnimations];
 	
@@ -985,7 +985,7 @@
 - (void)dealloc {
 	self.dataSource = Nil;
 	self.currentView = Nil;
-	self.newView = Nil;
+	self.theNewView = Nil;
     [super dealloc];
 }
 
