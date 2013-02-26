@@ -38,7 +38,7 @@ typedef enum {
 	NSInteger pageDifference;
 	
 	UIView *currentView;
-	UIView *newView;
+	UIView *theNewView;
 	
 	// shadows
 	CALayer *frontLayerShadow;
@@ -76,7 +76,7 @@ typedef enum {
 @property (nonatomic,assign) NSInteger pageDifference;
 @property (nonatomic,assign) BOOL disabled;
 @property (nonatomic,assign) UIView *currentView;
-@property (nonatomic,assign) UIView *newView;
+@property (nonatomic,assign) UIView *theNewView;
 @property (nonatomic,readonly) BOOL animating;
 
 
