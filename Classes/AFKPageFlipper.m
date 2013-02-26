@@ -559,13 +559,9 @@
 	
 	float progress =[[dict objectForKey:@"PROGRESS"] floatValue];
 	BOOL setDelegate = [[dict objectForKey:@"DELEGATE"] boolValue];
-	BOOL animate = [[dict objectForKey:@"ANIMATE"] boolValue];
-	
-	
+    
 	float newAngle = startFlipAngle + progress * (endFlipAngle - startFlipAngle);
-	float duration = animate ? 0.5 * fabs((newAngle - currentAngle) / (endFlipAngle - startFlipAngle)) : 0;
-	
-	duration = 0.5;
+	float duration = 0.5;
 	
 	CATransform3D endTransform = CATransform3DIdentity;
 	endTransform.m34 = 1.0f / 2500.0f;
@@ -596,9 +592,7 @@
 	
 	
 	float newAngle = startFlipAngle + progress * (endFlipAngle - startFlipAngle);
-	float duration = animate ? 0.5 * fabs((newAngle - currentAngle) / (endFlipAngle - startFlipAngle)) : 0;
-	
-	duration = 0.5;
+	float duration = 0.5;
 	
 	CATransform3D endTransform = CATransform3DIdentity;
 	endTransform.m34 = 1.0f / 2500.0f;
